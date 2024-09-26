@@ -1,0 +1,67 @@
+.market-section{
+    background-color: var(--white);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.market-section h3{
+    margin-top: 30px;
+    padding: 10px;
+    color: var(--dark-green);
+    background-color: rgb(215, 255, 212);
+    border-radius: 10px;
+    box-shadow: 3px 1px 10px rgba(0, 0, 0, 0.15);;
+}
+.market-section table{
+    width: 50vw;
+}
+
+.profile-div{
+    background-color: var(--dark-green);
+    border-radius: 50%;
+    text-align: center;
+    width: 40px;
+    height: 40px;
+    padding: 10px;
+    margin: 20px 30px ;
+}
+.profile-div i{
+    font-size: 1.2rem;
+    color: var(--white);
+}    
+.market-section table {
+    border-radius: 10px;
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    
+}
+thead{border-radius: 10px;}
+.market-section table thead tr {
+    background-color: var(--brown);
+    color: #ffffff;
+    text-align: left;
+}
+.market-section table th,
+.market-section table td {
+    padding: 12px 15px;
+}
+.market-section table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.market-section table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.market-section table tbody tr:last-of-type {
+    border-bottom: 2px solid var(--brown);
+}
+.market-section table tbody tr.active-row {
+    font-weight: bold;
+    color: var(--brown);
+}
