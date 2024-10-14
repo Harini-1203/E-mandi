@@ -2,7 +2,7 @@
     --light-green:#C1E899;
     --dark-green:#55883B;
     --brown:#9A6735;
-    --white:#E6F0DC;
+    --white:#f2f9eb;
 }
 
 *{
@@ -10,12 +10,17 @@
     padding: 0;
     box-sizing: border-box;
 }
+body{
+    background-image: url("./images/Untitled\ Project.jpg");
+    height: 100vh;
+    background-size: cover;
+    
+}
 nav{
     display: flex;
-    background-color: var(--light-green);
     justify-content: space-between;
     height: 90px;
-    box-shadow: 0px 0px 30px 0px var(--dark-green);
+    box-shadow: 0px 0px 5px 0px var(--dark-green);
 }
 
 nav img{
@@ -31,17 +36,21 @@ nav img{
     margin-top: 25px;
     border-radius: 10px;
     background-color: var(--dark-green);
+    color: white;
 }
 nav a{
     text-decoration: none;
     font-size: 1rem;
     color: white;
 }
+nav i{
+    color: #9A6735;
+}
 
 .main-details img{
     width: 100vw;
     height: 90vh;
-    object-fit: cover;
+    
     filter: blur(100%);
     margin-top: 2px;
 }
@@ -60,3 +69,4 @@ nav a{
     color: var(--dark-green);
     margin: 10px 0;
 }
+
