@@ -14,7 +14,7 @@
     align-items: center;
 }
 .market-nav{
-    background-color: #e2f7cc;
+    background-color: #caf5c8;
 }
 .market-nav i{
     color: #dddddd;
@@ -81,7 +81,7 @@ thead{border-radius: 10px;}
 }
 
 .menu{
-    background-color: #e2f7cc;
+    background-color: #caf5c8;
     width: fit-content;
     position: absolute;
     height: 85vh;
@@ -89,6 +89,10 @@ thead{border-radius: 10px;}
     top:70px;
     padding: 0 30px 30px ;
     border-radius: 10px;
+}
+.menu a{
+    color: black;
+    text-decoration: none;
 }
 .menu div{
     padding: 20px;
@@ -102,5 +106,7 @@ thead{border-radius: 10px;}
     cursor: pointer;
 }
 .market-bottom{
+    width: 80vw;
     display: flex;
+    justify-content: center;
 }

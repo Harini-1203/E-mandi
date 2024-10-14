@@ -4,13 +4,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>booking</title>
+    <title>Cart Details</title>
+
+    <style>
+        .cart-details {
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        .cart-item {
+            padding: 20px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .cart-summary {
+            margin-top: 20px;
+            text-align: right;
+        }
+
+        .place-order {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .place-order:hover {
+            background-color: #45a049;
+        }
+    </style>
+
 </head>
 
 <body>
-    <h1>booking</h1>
-    <div></div>
+    <header>
+        <h1>Your Cart</h1>
+    </header>
 
+    <section class="cart-details">
+        <div class="cart-item">
+            <h3>Tomato</h3>
+            <p>Price: $1.50/kg</p>
+            <p>Quantity: 2 kg</p>
+            <p>Total: $3.00</p>
+        </div>
+        <div class="cart-item">
+            <h3>Banana</h3>
+            <p>Price: $0.80/kg</p>
+            <p>Quantity: 5 kg</p>
+            <p>Total: $4.00</p>
+        </div>
+
+        <div class="cart-summary">
+            <h3>Total Price: $7.00</h3>
+            <a href="order.html">
+                <button class="place-order">Place Order</button>
+            </a>
+        </div>
+    </section>
 </body>
 
 </html>
