@@ -8,6 +8,7 @@
 body {
     background-color: #f5f5f5;
     color: #333;
+
 }
 
 header {
@@ -15,9 +16,16 @@ header {
     color: white;
     padding: 20px;
     text-align: center;
+    display: flex;
 
 }
-
+header img{
+    width: 100px;
+    flex-basis: 20%;
+}
+.h-details{
+    flex-basis: 80%;
+}
 header h1 {
     margin-bottom: 10px;
     font-size: 2.5em;
