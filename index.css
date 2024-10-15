@@ -11,7 +11,7 @@
     box-sizing: border-box;
 }
 body{
-    background-image: url("./images/Untitled\ Project.jpg");
+    background-image: url("https://w0.peakpx.com/wallpaper/929/367/HD-wallpaper-fruits-fruits-vegetables-fruit-vegetable.jpg");
     height: 100vh;
     background-size: cover;
     
@@ -19,14 +19,13 @@ body{
 nav{
     display: flex;
     justify-content: space-between;
-    height: 90px;
-    box-shadow: 0px 0px 5px 0px var(--dark-green);
+    height: 70px;
 }
 
 nav img{
     width: 150px;
     padding: 20px;
-    margin-top: -10px;
+    margin-top: -20px;
 }
 
 .nav-right button{
@@ -54,19 +53,24 @@ nav i{
     filter: blur(100%);
     margin-top: 2px;
 }
+.main-details{
+    display: flex;
+    flex-direction: column;
+    height: 70vh;
+    padding: 80px;
+    justify-content: center;
+    align-items: left;
+}
 .main-details .welcome-sec{
-    position: absolute;
-    top:200px;
-    left: 100px;
     width: 50vw;
-
+}
+.main-details{
+    color: white;
 }
 .main-details h1{
-    color: var(--brown);
     margin: 10px -5px;
 }
 .main-details p{
-    color: var(--dark-green);
     margin: 10px 0;
 }
 

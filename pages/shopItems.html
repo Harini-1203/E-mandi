@@ -5,7 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vegetable and Fruits Market</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <link rel="stylesheet" href="./shop.css">
+
 </head>
 
 <body>
@@ -14,8 +20,7 @@
         <p>Browse through a curated selection of fresh produce available in the market.</p>
         <div class="cart-container">
             <a href="booking.html" class="cart-link">
-                <img src="https://via.placeholder.com/40" alt="Cart" class="cart-icon">
-                <span class="cart-count">0</span>
+                <i class="fa-solid fa-cart-shopping"></i>
             </a>
         </div>
     </header>
@@ -30,27 +35,41 @@
     <section class="product-list">
         <div class="product-item t">
             <img src="../images/toma.jpeg" alt="Product Image">
-            <h3>Tomato</h3>
-            <p>Price: ₹20/kg</p>
-            <p>Availability: In Stock</p>
+            <div class="card-text">
+                <h3>Tomato</h3>
+                <p>Price: ₹20/kg</p>
+                <p>Availability: In Stock</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
         </div>
         <div class="product-item">
             <img src="../images/banana.jpeg" alt="Product Image">
-            <h3>Banana</h3>
-            <p>Price: ₹40/kg</p>
-            <p>Availability: Limited</p>
+            <div class="card-text">
+                <h3>Banana</h3>
+                <p>Price: ₹40/kg</p>
+                <p>Availability: Limited</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
         </div>
         <div class="product-item">
+
             <img src="../images/carrot.jpeg" alt="Product Image">
-            <h3>Carrot</h3>
-            <p>Price: ₹30/kg</p>
-            <p>Availability: In Stock</p>
+            <div class="card-text">
+                <h3>Carrot</h3>
+                <p>Price: ₹30/kg</p>
+                <p>Availability: In Stock</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
         </div>
         <div class="product-item">
+
             <img src="../images/apple.jpeg" alt="Product Image">
-            <h3>Apple</h3>
-            <p>Price: ₹100/kg</p>
-            <p>Availability: Out of Stock</p>
+            <div class="card-text">
+                <h3>Apple</h3>
+                <p>Price: ₹100/kg</p>
+                <p>Availability: Out of Stock</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
         </div>
     </section>
 </body>
