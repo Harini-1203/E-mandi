@@ -25,11 +25,22 @@
                 government rates, track inflation, and book bulk orders online. Register for full access or explore as a
                 guest, with regional language support for all users</p>
         </div>
+
         <div class="nav-right">
-            <a href="./pages/register.html"><button>Register</button></a>
-            <a href="./pages/login.html"><button>Login</button></a>
+            <button>Register</button>
+            <button>Login</button>
         </div>
+
     </div>
+    <script>
+        const buttons = document.querySelector("button");
+        buttons[0], addEventListener("click", () => {
+            window.location.href = 'pages/register.html'
+        })
+        buttons[1], addEventListener("click", () => {
+            window.location.href = "pages/login.html"
+        })
+    </script>
 
 </body>
 

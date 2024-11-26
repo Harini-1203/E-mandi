@@ -39,13 +39,14 @@
     </div>
 
     <section class="product-list">
-        <div class="product-item t">
+        <div class="product-item">
             <img src="../images/toma.jpeg" alt="Product Image">
             <div class="card-text">
                 <h3>Tomato</h3>
                 <p>Price: ₹20/kg</p>
                 <p>Availability: In Stock</p>
                 <button class="add-to-cart">Add to Cart</button>
+                <button class="remove">Remove from Cart</button>
             </div>
         </div>
         <div class="product-item">
@@ -55,6 +56,7 @@
                 <p>Price: ₹40/kg</p>
                 <p>Availability: Limited</p>
                 <button class="add-to-cart">Add to Cart</button>
+                <button class="remove">Remove from Cart</button>
             </div>
         </div>
         <div class="product-item">
@@ -65,9 +67,10 @@
                 <p>Price: ₹30/kg</p>
                 <p>Availability: In Stock</p>
                 <button class="add-to-cart">Add to Cart</button>
+                <button class="remove">Remove from Cart</button>
             </div>
         </div>
-        <div class="product-item">
+        <div class="product-item a">
 
             <img src="../images/apple.jpeg" alt="Product Image">
             <div class="card-text">
@@ -75,9 +78,62 @@
                 <p>Price: ₹100/kg</p>
                 <p>Availability: Out of Stock</p>
                 <button class="add-to-cart">Add to Cart</button>
+                <button class="remove">Remove from Cart</button>
             </div>
         </div>
     </section>
+    <script>
+        let price = 0;
+        document.addEventListener('DOMContentLoaded', () => {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            document.querySelectorAll('.product-item').forEach(product => {
+                const productName = product.querySelector('h3').innerText;
+                const addButton = product.querySelector('.add-to-cart');
+                const removeButton = product.querySelector('.remove');
+                const isInCart = cart.some(item => item.name === productName);
+                if (isInCart) {
+                    addButton.style.display = "none";
+                    removeButton.style.display = "inline";
+                } else {
+                    addButton.style.display = "inline";
+                    removeButton.style.display = "none";
+                }
+            });
+        })
+        function b(event) {
+            const product = event.target.closest('.product-item');
+            const productName = product.querySelector('h3').innerText;
+            const productPrice = product.querySelector('p').innerText.split('₹')[1].split('/')[0].trim();
+
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.push({ name: productName, price: productPrice, quantity: 1 });
+            localStorage.setItem('cart', JSON.stringify(cart));
+            alert(`${productName} added to cart`);
+            const removeButton = event.target.nextElementSibling;
+            event.target.style.display = "none";
+            removeButton.style.display = "inline";
+
+
+        }
+        const remFunc = (event) => {
+            var cart = JSON.parse(localStorage.getItem('cart'));
+            const button = event.target
+            const product = event.target.closest('.product-item');
+            const productName = product.querySelector('h3').innerText;
+            cart = cart.filter(item => item.name !== productName);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            alert("removed from Cart");
+            button.style.display = "none"
+            event.target.previousElementSibling.style.display = 'inline';
+        }
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', b);
+        });
+        document.querySelectorAll('.remove').forEach(button => {
+            button.addEventListener('click', remFunc)
+        })
+
+    </script>
 </body>
 
 </html>

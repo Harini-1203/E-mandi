@@ -3,30 +3,37 @@
     padding: 0;
     font-family: Arial, sans-serif;
 }
+body{
+    width: 100vh;
+}
 .market{
     background-color: #f7faf6;
     height: 100vh;
     width: 100vw;
 }
 nav{
+    background-color: #74cb77;
     height: fit-content;
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
 }
 .nav-left img{
-    width: 150px;
+    width: 120px;
     margin-top: -10px;
+    padding: 10px;
 }
 .market-section{
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-.market-nav{
-    background-color: #74cb77;
-}
+
 .market-nav i{
     color: #dddddd;
-    width: 100px;
-    height: 100px;
+    font-size: 2rem;
+    padding-right: 50px;
+    cursor: pointer;
 }
 .market-section h1{
     margin-top: 30px;
@@ -35,27 +42,20 @@ nav{
     border-radius: 10px;
     box-shadow: 3px 1px 10px rgba(0, 0, 0, 0.15);
 }
+.market-bottom{
+    width: 100vw;
+    display: flex;
+    justify-content:space-between;
+
+}
 .market-section table{
     width: 50vw;
 }
-
-.profile-div{
-    background-color: var(--dark-green);
-    border-radius: 50%;
-    text-align: center;
-    width: 40px;
-    height: 40px;
-    padding: 10px;
-    margin: 20px 30px ;
-}
-.profile-div i{
-    font-size: 1.2rem;
-    color: var(--white);
-}    
+   
 .market-section table {
     border-radius: 10px;
     border-collapse: collapse;
-    margin: 25px 0;
+    margin: 25px 25vw;
     font-size: 0.9em;
     font-family: sans-serif;
     min-width: 400px;
@@ -94,10 +94,21 @@ thead{border-radius: 10px;}
     width: fit-content;
     position: absolute;
     height: 85vh;
+    width: 160px;
     right: 0;
-    top:60px;
+    display: none;
+    top:70px;
     padding: 0 30px 30px ;
     border-radius: 10px;
+    animation: menuAni 0.3s forwards;
+}
+@keyframes menuAni {
+    0%{
+        right: -160px;
+    }
+    100%{
+        right: 0px;
+    }   
 }
 .menu a{
     color: white;
@@ -113,9 +124,4 @@ thead{border-radius: 10px;}
     background-color: var(--brown);
     color: white;
     cursor: pointer;
-}
-.market-bottom{
-    width: 80vw;
-    display: flex;
-    justify-content: center;
 }

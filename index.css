@@ -11,9 +11,11 @@
     box-sizing: border-box;
 }
 body{
-    background-image: url("https://w0.peakpx.com/wallpaper/929/367/HD-wallpaper-fruits-fruits-vegetables-fruit-vegetable.jpg");
+    /* background-image: url("https://w0.peakpx.com/wallpaper/929/367/HD-wallpaper-fruits-fruits-vegetables-fruit-vegetable.jpg"); */
+    background-image: url('./images/bg2.jpeg');
     height: 100vh;
     background-size: cover;
+    /* background-position: 0% 20%; */
     
 }
 nav{

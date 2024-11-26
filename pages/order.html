@@ -7,6 +7,11 @@
     <title>Order Status</title>
 
     <style>
+        h1,
+        h3 {
+            color: #45a049;
+        }
+
         .order-status {
             max-width: 600px;
             margin: 40px auto;
@@ -27,28 +32,31 @@
 
 <body>
     <header>
-        <h1>Order Status</h1>
+        <center>
+            <h1>Order Status</h1>
+        </center>
     </header>
 
     <section class="order-status">
         <div class="order-info">
             <h3>Order ID: 123456</h3>
-            <p>Order Date: October 14, 2024</p>
+            <p class="order-date"></p>
             <p>Status: Shipped</p>
-            <p>Expected Delivery: October 16, 2024</p>
-        </div>
-
-        <div class="order-summary">
-            <h3>Items:</h3>
-            <p>Tomato: 2 kg</p>
-            <p>Banana: 5 kg</p>
-            <p>Total Price: $7.00</p>
+            <p class="exp-date"></p>
         </div>
     </section>
+    <script>
+        const d = document;
+        const dateP = d.querySelector('.order-date');
+        const dateE = d.querySelector('.exp-date')
+        let date = new Date();
+        dateP.innerHTML = `Order Date:${date.getDate()}-${date.getMonth()}-${date.getFullYear()}`
+        dateE.innerHTML = `Expected Delivey Date:${date.getDate() + 1}-${date.getMonth()}-${date.getFullYear()}`
 
-    <footer>
-        <p>© 2024 E-MANDI. All Rights Reserved.</p>
-    </footer>
+    </script>
+
 </body>
+
+
 
 </html>

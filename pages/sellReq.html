@@ -71,10 +71,21 @@
                 <textarea id="description" name="description" rows="4" placeholder="Describe the product"
                     required></textarea>
             </div>
+            <button class="submit-btn" type="submit">Submit Sell Request</button>
 
-            <button type="submit" class="submit-btn">Submit Sell Request</button>
         </form>
+
     </section>
+    <script>
+        const form = document.getElementById('sell-form');
+
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            alert("Submitted successfully");
+            this.reset()
+        });
+
+    </script>
 </body>
 
 </html>

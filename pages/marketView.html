@@ -7,8 +7,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
         integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="./market.css">
-    <link rel="stylesheet" href="../index.css">
 
 </head>
 
@@ -18,7 +21,9 @@
             <div class="nav-left">
                 <img src="../images/logo.png" alt="logo">
             </div>
-            <div class="profile-div"><i class="fa-solid fa-user"></i></div>
+            <div>
+                <i onclick="menuFunc()" class="fa-solid fa-bars"></i>
+            </div>
         </nav>
         <div class="market-bottom">
             <div class="market-section">
@@ -72,6 +77,20 @@
         </div>
     </div>
     </div>
+    <script>
+        const menuFunc = (event) => {
+            let menuBool = JSON.parse(localStorage.getItem('menuClicked'));
+            const menu = document.querySelector('.menu');
+            if (menuBool) {
+                menu.style.display = 'none';
+                localStorage.setItem('menuClicked', false);
+            }
+            else {
+                menu.style.display = 'block';
+                localStorage.setItem('menuClicked', true);
+            }
+        }
+    </script>
 </body>
 
 </html>

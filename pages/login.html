@@ -5,89 +5,67 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>login</title>
+    <link rel="stylesheet" href="sign.css">
 
     <style>
-        body {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            width: 100vw;
-            background-image: url("https://st5.depositphotos.com/74917528/63486/i/450/depositphotos_634865642-stock-photo-fruits-vegetables-black-background-top.jpg");
-            background-size: cover;
-            background-position: 0% 80%;
-        }
-
         form {
-            background-color: #74cb77;
-            padding: 30px 50px;
+            margin-top: 100px;
+            width: 100%;
+            max-width: 500px;
+            background-color: rgba(0, 0, 0, 0.279);
+            padding: 50px;
             color: white;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            margin-bottom: 50px;
-        }
-
-        form label {
-            font-size: 1.2rem;
-            display: block;
-            padding: 5px 0;
-        }
-
-        form input {
-            padding: 5px 10px;
-            font-size: 1rem;
-            border-radius: 10px;
-            border: 1px solid black;
-        }
-
-        .form-single {
-            margin: 20px 0;
-        }
-
-        form button {
-            display: block;
-            margin: 20px auto;
-            font-size: 1.2rem;
-            padding: 10px 20px;
-            border-radius: 10px;
-            background-color: white;
-            border: none;
-            cursor: pointer;
-        }
-
-
-
-        form a {
-            text-decoration: none;
-            color: #4CAF50;
-        }
-
-        form button:hover {
-            color: white;
-            background-color: darkgreen;
-        }
-
-
-        h1 {
-            color: white;
-            text-align: center;
         }
     </style>
 </head>
 
 <body>
 
-    <form>
+    <form onsubmit="loginFunc(event)">
         <div class="form-single">
             <label>Phone</label>
-            <input type="number">
+            <input type="number" name="mobileNo">
         </div>
         <div class="form-single">
             <label>Password:</label>
-            <input type="text">
+            <input type="text" name="password">
         </div>
-        <button><a href="marketView.html">Login</a></button>
+        <a href="#">forgot password?</a>
+        <button type="submit">Login</button>
     </form>
+
+    <script>
+        const loginFunc = async (e) => {
+            e.preventDefault();
+            const fd = new FormData(document.querySelector('form'));
+            const formData = Object.fromEntries(fd.entries());
+            const { mobileNo, password } = formData
+            try {
+                const res = await fetch('http://localhost:3000/api/users/login', {
+                    method: 'POST',
+                    headers: {
+                        'content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ mobileNo, password })
+                })
+                const message = res.body.message;
+                if (res.ok) {
+                    alert("loggin succesfully");
+                    window.location.href = 'marketview.html';
+
+                }
+                else {
+                    alert(message);
+                }
+            }
+            catch (err) {
+                console.log(err);
+
+            }
+        }
+    </script>
 </body>
 
 </html>
