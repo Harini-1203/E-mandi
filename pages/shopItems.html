@@ -31,12 +31,12 @@
         </div>
     </header>
 
-    <div class="categories">
+    <!-- <div class="categories">
         <button>All</button>
         <button>Vegetables</button>
         <button>Fruits</button>
         <button>Organic</button>
-    </div>
+    </div> -->
 
     <section class="product-list">
         <div class="product-item">
@@ -84,7 +84,7 @@
     </section>
     <script>
         let price = 0;
-        document.addEventListener('DOMContentLoaded', () => {
+        window.onload = () => {
             const cart = JSON.parse(localStorage.getItem('cart')) || [];
             document.querySelectorAll('.product-item').forEach(product => {
                 const productName = product.querySelector('h3').innerText;
@@ -99,7 +99,7 @@
                     removeButton.style.display = "none";
                 }
             });
-        })
+        }
         function b(event) {
             const product = event.target.closest('.product-item');
             const productName = product.querySelector('h3').innerText;

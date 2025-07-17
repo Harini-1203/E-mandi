@@ -27,7 +27,7 @@
         </nav>
         <div class="market-bottom">
             <div class="market-section">
-                <h1>Today's Price details</h1>
+                <h1>Today's Prices</h1>
                 <table class="table table-success table-striped">
                     <thead>
                         <tr>
@@ -39,31 +39,35 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th>1</th>
-                            <td>Tomato</td>
-                            <td>₹20</td>
-                            <td>₹15</td>
-                            <td>₹20</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Potato</td>
-                            <td>₹40</td>
-                            <td>₹30</td>
-                            <td>₹45</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>Apple</td>
-                            <td>₹50</td>
-                            <td>₹40</td>
-                            <td>₹50</td>
-                        </tr>
+
                     </tbody>
                 </table>
             </div>
             <div class="menu">
+                <a href="./admin/additem.html">
+                    <div class="menu-single">Add item</div>
+                </a>
+                <a href="./admin/complaint.html">
+                    <div class="menu-single">View Complaints</div>
+                </a>
+                <a href="./admin/order.html">
+                    <div class="menu-single">View Orders</div>
+                </a>
+                <a href="./admin/updatepricing.html">
+                    <div class="menu-single">Update Pricing</div>
+                </a>
+
+            </div>
+        </div>
+    </div>
+    </div>
+    <script>
+        const userType = localStorage.getItem("userType");
+        console.log(userType)
+        const menu = document.querySelector(".menu");
+        if (userType === "user") {
+
+            menu.innerHTML = `
                 <a href="./shopItems.html">
                     <div class="menu-single">Shop Items</div>
                 </a>
@@ -72,24 +76,55 @@
                 </a>
                 <a href="./complaint.html">
                     <div class="menu-single">complaint</div>
-                </a>
-            </div>
-        </div>
-    </div>
-    </div>
-    <script>
-        const menuFunc = (event) => {
-            let menuBool = JSON.parse(localStorage.getItem('menuClicked'));
-            const menu = document.querySelector('.menu');
-            if (menuBool) {
-                menu.style.display = 'none';
-                localStorage.setItem('menuClicked', false);
-            }
-            else {
-                menu.style.display = 'block';
-                localStorage.setItem('menuClicked', true);
+                </a>`
+        }
+
+        const getData = async () => {
+            try {
+                const response = await fetch('http://localhost:3000/api/tableData');
+                const data = await response.json();
+
+                const tableBody = document.querySelector('tbody');
+
+                data.forEach((item, index) => {
+                    const row = `
+                        <tr>
+                            <td>${index + 1}</td>
+                            <td>${item.name}</td>
+                            <td>₹${item.govtPrice}</td>
+                            <td>₹${item.wholePrice}</td>
+                            <td>₹${item.retailPrice}</td>
+                        </tr>
+                    `;
+                    tableBody.innerHTML += row;
+                });
+            } catch (error) {
+                console.error('Error fetching table data:', error);
             }
         }
+        getData();
+        const menuFunc = () => {
+            let menuBool = JSON.parse(localStorage.getItem('menuClicked')) || false;
+            const menu = document.querySelector('.menu');
+
+            if (!menuBool) {
+                localStorage.setItem('menuClicked', true);
+                menu.style.display = 'block';
+            } else {
+                localStorage.setItem('menuClicked', false);
+                menu.style.display = 'none';
+            }
+        };
+        window.onload = () => {
+            if (JSON.parse(localStorage.getItem('menuClicked'))) {
+                menu.style.display = 'block';
+            } else {
+                menu.style.display = 'none';
+            }
+
+        }
+
+
     </script>
 </body>
 

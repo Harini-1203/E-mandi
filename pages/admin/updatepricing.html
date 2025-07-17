@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Update Pricing</title>
+  <link rel="stylesheet" href="updatepricing.css">
+</head>
+
+<body>
+  <section class="section-container">
+    <h2>Update Pricing:</h2>
+    <form class="update-pricing-form" onsubmit="updateFunc(event)">
+      <label for="item-name">Item Name:</label>
+      <input type="text" id="item-name" name="name" placeholder="Enter item name" required>
+
+      <label>Select category</label>
+      <select id="c">
+        <option value="govtPrice">Govt Price</option>
+        <option value="retailPrice">RetailPrice</option>
+        <option value="wholePrice">WholeSale Price</option>
+      </select>
+
+      <label for="new-price">New Price:</label>
+      <input type="number" id="new-price" name="new-price" placeholder="Enter new price" required>
+
+      <button type="submit">Update Price</button>
+    </form>
+  </section>
+  <script>
+    const updateFunc = (event) => {
+
+      event.preventDefault();
+      const form = document.querySelector('.update-pricing-form');
+      const name = document.querySelector('#item-name').value;
+      const category = document.querySelector('#c').value;
+      const newVal = document.querySelector('#new-price').value;
+
+      const filter = { "name": name }
+      const update = { [category]: newVal };
+
+      fetch('http://localhost:3000/api/tableData', {
+        method: 'PUT',
+        headers: { "content-Type": "application/json" },
+        body: JSON.stringify({ filter, update })
+      })
+        .then(response => response.json())
+        .then(data => {
+          alert("Item updated successfully!");
+          console.log('Server Response:', data);
+
+          form.reset();
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          alert("Failed to update item!");
+        });
+
+    }
+  </script>
+</body>
+
+</html>

@@ -46,14 +46,18 @@
         </div>
     </section>
     <script>
-        const d = document;
-        const dateP = d.querySelector('.order-date');
-        const dateE = d.querySelector('.exp-date')
-        let date = new Date();
-        dateP.innerHTML = `Order Date:${date.getDate()}-${date.getMonth()}-${date.getFullYear()}`
-        dateE.innerHTML = `Expected Delivey Date:${date.getDate() + 1}-${date.getMonth()}-${date.getFullYear()}`
-
+        (function () {
+            const orders = JSON.parse(localStorage.getItem('orders')) || [];
+            const order = orders[orders.length - 1];
+            const dateP = document.querySelector('.order-date');
+            const dateE = document.querySelector('.exp-date');
+            const orderId = document.querySelector('h3');
+            orderId.innerText = `Order ID: ${order.orderId}`;
+            dateP.innerHTML = `Order Date: ${order.orderDate}`;
+            dateE.innerHTML = `Expected Delivery Date: ${order.orderDate}`;
+        })();
     </script>
+
 
 </body>
 

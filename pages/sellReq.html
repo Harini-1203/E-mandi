@@ -81,9 +81,38 @@
 
         form.addEventListener('submit', function (e) {
             e.preventDefault();
-            alert("Submitted successfully");
-            this.reset()
+
+            const productCategory = document.getElementById('product-category').value;
+            const productType = document.getElementById('product-type').value;
+            const productName = document.getElementById('product-name').value;
+            const quantity = document.getElementById('quantity').value;
+            const price = document.getElementById('price').value;
+            const availability = document.getElementById('availability').value;
+            const sellerContact = document.getElementById('seller-contact').value;
+            const description = document.getElementById('description').value;
+
+            const formData = {
+                productCategory,
+                productType,
+                productName,
+                quantity,
+                price,
+                availability,
+                sellerContact,
+                description
+            };
+
+            let sellRequests = JSON.parse(localStorage.getItem('sellRequests')) || [];
+
+            sellRequests.push(formData);
+
+            localStorage.setItem('sellRequests', JSON.stringify(sellRequests));
+
+            alert('Sell request submitted successfully!');
+
+            this.reset();
         });
+
 
     </script>
 </body>

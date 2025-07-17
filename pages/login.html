@@ -9,7 +9,7 @@
 
     <style>
         form {
-            margin-top: 100px;
+            margin-top: 200px;
             width: 100%;
             max-width: 500px;
             background-color: rgba(0, 0, 0, 0.279);
@@ -18,6 +18,11 @@
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
+
+        form select {
+            width: 79%;
+            border-radius: 4px;
+        }
     </style>
 </head>
 
@@ -25,12 +30,19 @@
 
     <form onsubmit="loginFunc(event)">
         <div class="form-single">
+            <label>User Type:</label>
+            <select id="select">
+                <option value="user">User</option>
+                <option value="admin">Admin</option>
+            </select>
+        </div>
+        <div class="form-single">
             <label>Phone</label>
-            <input type="number" name="mobileNo">
+            <input type="number" name="mobileNo" required>
         </div>
         <div class="form-single">
             <label>Password:</label>
-            <input type="text" name="password">
+            <input type="text" name="password" required>
         </div>
         <a href="#">forgot password?</a>
         <button type="submit">Login</button>
@@ -38,6 +50,13 @@
 
     <script>
         const loginFunc = async (e) => {
+            // e.preventDefault();
+            // window.location.href = 'marketview.html';
+
+
+
+
+            // alert(selectedUser);
             e.preventDefault();
             const fd = new FormData(document.querySelector('form'));
             const formData = Object.fromEntries(fd.entries());
@@ -50,14 +69,19 @@
                     },
                     body: JSON.stringify({ mobileNo, password })
                 })
-                const message = res.body.message;
+                console.log(mobileNo, password);
+                // const message = res.body.message;
                 if (res.ok) {
-                    alert("loggin succesfully");
+
+                    const selectedUser = document.getElementById('select').value;
+                    localStorage.setItem("userType", selectedUser);
+                    alert("logging in as" + selectedUser);
                     window.location.href = 'marketview.html';
+
 
                 }
                 else {
-                    alert(message);
+                    alert("invalid number or password");
                 }
             }
             catch (err) {

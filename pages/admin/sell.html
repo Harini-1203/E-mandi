@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sell Requests</title>
+  <link rel="stylesheet" href="sell.css">
+</head>
+
+<body>
+  <section class="section-container">
+    <h2>Sell Requests</h2>
+    <table class="styled-table">
+      <thead>
+        <tr>
+          <th>Product Name</th>
+          <th>Category</th>
+          <th>Quantity</th>
+          <th>Price</th>
+          <th>Availability</th>
+          <th>Seller Contact</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody id="sell-requests-table">
+        <!-- Dynamic rows will be added here -->
+      </tbody>
+    </table>
+  </section>
+
+  <script>
+    // Retrieve sell requests from localStorage
+    const sellRequests = JSON.parse(localStorage.getItem('sellRequests')) || [];
+
+    // Reference to the table body
+    const tableBody = document.getElementById('sell-requests-table');
+
+    // Populate the table with the data
+    sellRequests.forEach((request) => {
+      const row = document.createElement('tr');
+
+      row.innerHTML = `
+        <td>${request.productName}</td>
+        <td>${request.productCategory}</td>
+        <td>${request.quantity}</td>
+        <td>$${request.price}</td>
+        <td>${request.availability}</td>
+        <td>${request.sellerContact}</td>
+        <td>${request.description}</td>
+      `;
+
+      tableBody.appendChild(row);
+    });
+  </script>
+</body>
+
+</html>

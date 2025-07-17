@@ -19,7 +19,7 @@ const createUser = async (req, res) => {
         // Check for duplicate mobileNo
         const dup = await userModel.findOne({ mobileNo });
         if (dup) {
-            return res.status(400).json({ message: "User already exists." });
+            return res.status(400).json({ message: "User already exists with phone number." });
         }
 
         // Hash password and create user
@@ -48,11 +48,11 @@ const loginUser=async (req,res)=>{
         const {mobileNo,password}=req.body;
         const userExists=await userModel.findOne({mobileNo});
         if(userExists){
-            if(bcrypt.compare(userExists.password,password)) {
+            const isPasswordValid = await bcrypt.compare(password, userExists.password);
+            if(isPasswordValid)
                 return res.status(200).json({message:"login SuccessFull"});
-            }
             else{
-                return res.status(400).json({message:"Incorrect Password"});
+                return res.status(400).json({message:"login unSuccessFull"});
             }
         }
         else{
@@ -64,7 +64,6 @@ const loginUser=async (req,res)=>{
     }
 }
 
-userModel.deleteMany({ mobile: 9391000686 });
 
 
 

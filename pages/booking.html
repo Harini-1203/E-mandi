@@ -17,12 +17,12 @@
         }
 
         .cart-details {
-            max-width: 600px;
+            max-width: 800px;
             margin: 40px auto;
-            padding: 20px;
+            padding: 20px 60px;
             background-color: white;
-            box-shadow: 0 0px 15px rgba(0, 0, 0, 0.2);
-            border-radius: 10px;
+            box-shadow: 0 0px 4px rgba(0, 0, 0, 0.2);
+            /* border-radius: 10px; */
         }
 
         .cart-item {
@@ -47,6 +47,16 @@
         .place-order:hover {
             background-color: #45a049;
         }
+
+        .b {
+            background-color: #45a049;
+            padding: 3px 20px;
+            color: white;
+            border: none;
+            font-size: 1.4rem;
+            border-radius: 2px;
+            margin: 0px 10px 0 0;
+        }
     </style>
 
 </head>
@@ -58,7 +68,7 @@
         <div class="cart-summary">
             <h3>Total Price: ₹500</h3>
             <a href="order.html">
-                <button class="place-order">Place Order</button>
+                <button onclick="saveCart()" class="place-order">Place Order</button>
             </a>
         </div>
     </section>
@@ -84,8 +94,8 @@
                 <p>Price: ₹${cart[i].price}/kg</p>
                 <p>Quantity: ${cart[i].quantity} kg</p>
                 <p>Total: ₹${itemTotal}</p>
-                <button onclick="updateQuantity('${cart[i].name}', 1)">+</button>
-                <button onclick="updateQuantity('${cart[i].name}', -1)">-</button>
+                <button onclick="updateQuantity('${cart[i].name}', 1)" class="b">+</button>
+                <button onclick="updateQuantity('${cart[i].name}', -1)" class="b" >-</button>
             `;
                 cartDetails.insertBefore(item, document.querySelector('.cart-summary'));
             }
@@ -101,6 +111,15 @@
                 localStorage.setItem('cart', JSON.stringify(cart));
                 location.reload();
             }
+        }
+        function saveCart() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const orderId = 'ORD' + Date.now();
+            const orderDetails = { orderId, cart, orderDate: new Date().toLocaleDateString() };
+
+            const orders = JSON.parse(localStorage.getItem('orders')) || [];
+            orders.push(orderDetails);
+            localStorage.setItem('orders', JSON.stringify(orders));
         }
         displayCart();
     </script>

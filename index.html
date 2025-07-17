@@ -33,13 +33,15 @@
 
     </div>
     <script>
-        const buttons = document.querySelector("button");
-        buttons[0], addEventListener("click", () => {
-            window.location.href = 'pages/register.html'
-        })
-        buttons[1], addEventListener("click", () => {
-            window.location.href = "pages/login.html"
-        })
+        const buttons = document.querySelectorAll("button");
+
+        buttons[0].addEventListener("click", () => {
+            window.location.href = 'pages/register.html';
+        });
+        buttons[1].addEventListener("click", () => {
+            window.location.href = "pages/login.html";
+        });
+
     </script>
 
 </body>

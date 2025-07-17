@@ -12,7 +12,7 @@ body{
     width: 100vw;
 }
 nav{
-    background-color: #74cb77;
+    background-color: #4aaf4d;
     height: fit-content;
     display: flex;
     justify-content:space-between;
@@ -38,9 +38,9 @@ nav{
 .market-section h1{
     margin-top: 30px;
     padding: 10px;
-    color: #45a448;
+    color: #4aaf4d;
     border-radius: 10px;
-    box-shadow: 3px 1px 10px rgba(0, 0, 0, 0.15);
+    
 }
 .market-bottom{
     width: 100vw;
@@ -50,21 +50,24 @@ nav{
 }
 .market-section table{
     width: 50vw;
+    -moz-border-radius: 5px;
+-moz-box-shadow: 5px 5px 5px black;
+-webkit-box-shadow: 5px 5px 5px black;
+box-shadow: 2px 2px 5px rgb(110, 110, 110);
 }
    
 .market-section table {
     border-radius: 10px;
     border-collapse: collapse;
     margin: 25px 25vw;
-    font-size: 0.9em;
+    font-size: 1rem;
     font-family: sans-serif;
     min-width: 400px;
-    box-shadow: 5px 5px 20px 10px rgba(0, 0, 0, 0.15);
     
 }
 thead{border-radius: 10px;}
 .market-section table thead tr {
-    background-color: #74cb77;
+    background-color: #4aaf4d;
     color: #ffffff;
     text-align: left;
 }
@@ -82,22 +85,22 @@ thead{border-radius: 10px;}
 }
 
 .market-section table tbody tr:last-of-type {
-    border-bottom: 2px solid #74cb77;
+    border-bottom: 2px solid #4aaf4d;
 }
 .market-section table tbody tr.active-row {
     font-weight: bold;
-    color: #74cb77;
+    color: #4aaf4d;
 }
 
 .menu{
-    background-color: #74cb77;
+    background-color: #4aaf4d;
     width: fit-content;
     position: absolute;
     height: 85vh;
     width: 160px;
     right: 0;
     display: none;
-    top:70px;
+    top:80px;
     padding: 0 30px 30px ;
     border-radius: 10px;
     animation: menuAni 0.3s forwards;

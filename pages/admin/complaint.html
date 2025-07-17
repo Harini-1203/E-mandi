@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Complaint Box</title>
+  <link rel="stylesheet" href="complaint.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+  <section class="section-container">
+    <h2>Complaint Box</h2>
+    <table class="styled-table">
+      <thead>
+        <tr>
+          <th>Track ID</th>
+          <th>User ID</th>
+          <th>Category</th>
+          <th>Complaint</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+
+      </tbody>
+    </table>
+  </section>
+  <script>
+    const complaints = JSON.parse(localStorage.getItem('complaints'));
+    window.onload = () => {
+      const tbody = document.querySelector('tbody');
+
+      complaints.forEach((com) => {
+        const newRow = document.createElement('tr');
+        newRow.innerHTML = `<td>${com.trackId}</td><td>${com.username}</td><td>${com.category}</td><td>${com.complaint}</td>
+        <td><input type="checkbox" onclick="toggleStatus(this)" class="resolve-checkbox"> Resolved</td>
+        `;
+        tbody.appendChild(newRow);
+      });
+      if (complaint && complaint.status === 'Resolved') {
+        checkbox.checked = true;
+      }
+    }
+
+    function toggleStatus(checkbox) {
+      const trackId = checkbox.closest('tr').querySelector('td').innerText;
+      const complaint = complaints.find(c => c.trackId === trackId);
+      if (complaint) {
+        complaint.status = checkbox.checked ? 'Resolved' : 'Pending';
+        localStorage.setItem('complaints', JSON.stringify(complaints));
+      }
+    }
+
+
+  </script>
+</body>
+
+</html>

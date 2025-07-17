@@ -84,11 +84,11 @@
     <div class="complaint-container">
         <form id="complaintForm">
             <h1>File a Complaint</h1>
-            <label for="username">Your Name:</label>
+            <label for="username">Your Number:</label>
             <input type="text" id="username" name="username" placeholder="Enter your name" required><br>
 
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" placeholder="Enter your email" required><br>
+            <label>Category:</label>
+            <input id="category" placeholder="e.g qualty,delivery issues" required><br>
 
             <label for="complaint">Complaint Details:</label>
             <textarea id="complaint" name="complaint" placeholder="Enter your complaint here" required></textarea><br>
@@ -104,6 +104,35 @@
             <button type="submit">Track Status</button>
         </form>
     </div>
+    <script>
+        const getStoredComplaints = () => JSON.parse(localStorage.getItem('complaints')) || [];
+        const saveComplaints = (complaints) => localStorage.setItem('complaints', JSON.stringify(complaints));
+
+        document.getElementById('complaintForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const trackId = 'C' + Date.now();
+            const complaintData = {
+                username: e.target.username.value,
+                category: e.target.category.value,
+                complaint: e.target.complaint.value,
+                status: 'Pending',
+                trackId
+            };
+            saveComplaints([...getStoredComplaints(), complaintData]);
+            alert(`Complaint submitted! Your Complaint ID is: ${trackId}`);
+            e.target.reset();
+        });
+
+        document.getElementById('trackForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const trackId = e.target.complaintId.value;
+            const complaint = getStoredComplaints().find(c => c.trackId === trackId);
+            alert(complaint ? `Complaint Status: ${complaint.status}` : 'Complaint ID not found.');
+            e.target.reset();
+        });
+
+    </script>
+
 </body>
 
 </html>

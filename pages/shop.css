@@ -12,7 +12,7 @@ body {
 }
 
 header {
-    background-color: #74cb77;
+    background-color: #45a049;
     color: white;
     padding: 20px;
     text-align: center;
@@ -87,7 +87,7 @@ header p {
 .categories button {
     background-color: #fff;
     border: 2px solid #caf5c8;
-    color: #4CAF50;
+    color: #45a049;
     padding: 10px 20px;
     margin: 0 10px;
     cursor: pointer;
@@ -96,7 +96,7 @@ header p {
 }
 
 .categories button:hover {
-    background-color: #4CAF50;
+    background-color: #45a049;
     color: white;
 }
 
@@ -115,7 +115,9 @@ header p {
     text-align: center;
 
 }
-
+.product-item:hover{
+    transform: translateY(-5px);
+}
 .product-item img {
     width: 150px;
     height: 150px;

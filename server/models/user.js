@@ -5,7 +5,6 @@ const userS=new mongoose.Schema({
     email:String,
     mobileNo:{
         type:Number,
-        required:true,
         unique:true
     },
     address:String,
